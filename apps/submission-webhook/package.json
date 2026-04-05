@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && esbuild ./src/index.ts --bundle --platform=node --format=esm --packages=external --outdir=dist/ --minify",
-		"dev": "tsx watch --clear-screen=false ./src/index.ts",
-		"start": "node dist/index.js",
+		"build": "bun build ./src/index.ts --outdir=dist --target=bun --minify",
+		"dev": "bun --watch src/index.ts",
+		"start": "bun dist/index.js",
 		"lint": "eslint src/**/*.ts",
 		"type-check": "tsc --noEmit"
 	},
@@ -16,8 +16,7 @@
 	"dependencies": {
 		"express": "^4.21.2",
 		"kafkajs": "^2.2.4",
-		"morgan": "^1.10.0",
-		"tsx": "^4.19.3"
+		"morgan": "^1.10.0"
 	},
 	"devDependencies": {
 		"@repo/common-zod": "workspace:*",
@@ -26,7 +25,6 @@
 		"@repo/typescript-config": "workspace:*",
 		"@types/express": "^5.0.0",
 		"@types/morgan": "^1.9.9",
-		"@types/node": "^20.11.24",
-		"esbuild": "^0.25.0"
+		"@types/node": "^20.11.24"
 	}
 }

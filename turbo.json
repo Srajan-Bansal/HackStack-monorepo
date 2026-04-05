@@ -16,6 +16,18 @@
 		"dev": {
 			"cache": false,
 			"persistent": true
+		},
+		"prisma:generate": {
+			"cache": false
+		},
+		"prisma:migrate": {
+			"cache": false
+		},
+		"seedLanguage": {
+			"cache": false
+		},
+		"seedProblem": {
+			"cache": false
 		}
 	}
 }

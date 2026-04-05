@@ -1,6 +1,7 @@
 {
 	"name": "HackStack",
 	"private": true,
+	"workspaces": ["apps/*", "packages/*", "packages/common/*"],
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
@@ -10,18 +11,15 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"web": "turbo run dev --filter=!submission-webhook",
 		"backend": "turbo run dev --filter=http-backend",
-		"prisma:generate": "pnpm --filter @repo/db exec pnpm prisma generate",
-		"prisma:migrate": "pnpm --filter @repo/db exec pnpm prisma migrate dev",
-		"prisma:seedLanguage": "pnpm --filter @repo/db exec pnpm run seedLanguage",
-		"prisma:seedProblem": "pnpm --filter @repo/db exec pnpm run seedProblem"
+		"prisma:generate": "turbo run prisma:generate --filter=@repo/db",
+		"prisma:migrate": "turbo run prisma:migrate --filter=@repo/db",
+		"prisma:seedLanguage": "turbo run seedLanguage --filter=@repo/db",
+		"prisma:seedProblem": "turbo run seedProblem --filter=@repo/db"
 	},
 	"devDependencies": {
 		"prettier": "^3.2.5",
 		"turbo": "^2.4.4",
 		"typescript": "5.5.4"
 	},
-	"packageManager": "pnpm@9.0.0",
-	"engines": {
-		"node": ">=18"
-	}
+	"packageManager": "bun@1.2.0"
 }

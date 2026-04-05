@@ -4,16 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "npx tsc -b",
-		"generate": "pnpm build && node -r dotenv/config dist/index.js",
-		"generate-all": "pnpm build && node -r dotenv/config dist/generateAllProblems.js"
+		"generate": "bun src/index.ts",
+		"generate-all": "bun src/generateAllProblems.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"dependencies": {
-		"dotenv": "^16.4.7"
-	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
 		"@types/node": "^20.11.24",

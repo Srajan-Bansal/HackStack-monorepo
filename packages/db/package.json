@@ -8,8 +8,10 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"seedLanguage": "ts-node ./src/seedLanguage.ts",
-		"seedProblem": "ts-node ./src/seedProblem.ts"
+		"seedLanguage": "bun ./src/seedLanguage.ts",
+		"seedProblem": "bun ./src/seedProblem.ts",
+		"prisma:generate": "bunx prisma generate",
+		"prisma:migrate": "bunx prisma migrate dev"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,8 +20,7 @@
 		"@repo/typescript-config": "workspace:*",
 		"@repo/language": "workspace:*",
 		"@types/node": "^20.0.0",
-		"prisma": "^6.2.1",
-		"ts-node": "^10.9.1"
+		"prisma": "^6.2.1"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.2.1"

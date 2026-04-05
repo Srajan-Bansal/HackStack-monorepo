@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && esbuild ./src/index.ts --bundle --platform=node --format=esm --packages=external --outdir=dist/ --minify",
-		"dev": "tsx watch --clear-screen=false -r dotenv/config ./src/index.ts",
-		"start": "node -r dotenv/config dist/index.js",
+		"build": "bun build ./src/index.ts --outdir=dist --target=bun --minify",
+		"dev": "bun --watch src/index.ts",
+		"start": "bun dist/index.js",
 		"lint": "eslint src/**/*.ts",
 		"type-check": "tsc --noEmit"
 	},
@@ -18,7 +18,6 @@
 		"bcryptjs": "^2.4.3",
 		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.5",
-		"dotenv": "^16.4.7",
 		"express": "^4.21.1",
 		"express-rate-limit": "^7.4.1",
 		"jsonwebtoken": "^9.0.2",
@@ -37,8 +36,6 @@
 		"@types/express": "^5.0.0",
 		"@types/jsonwebtoken": "^9.0.7",
 		"@types/morgan": "^1.9.9",
-		"@types/node": "^22.10.2",
-		"esbuild": "^0.25.0",
-		"tsx": "^4.19.3"
+		"@types/node": "^22.10.2"
 	}
 }
