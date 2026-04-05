@@ -27,13 +27,45 @@ const CodeEditor = ({
 				value={value}
 				onChange={onChange}
 				options={{
+					// Layout
 					minimap: { enabled: false },
 					fontSize: 14,
 					lineNumbers: 'on',
-					roundedSelection: false,
-					scrollBeyondLastLine: false,
-					readOnly: false,
 					automaticLayout: true,
+					scrollBeyondLastLine: false,
+					padding: { top: 12, bottom: 12 },
+
+					// Brackets & Indentation
+					bracketPairColorization: { enabled: true },
+					guides: { bracketPairs: true, indentation: true },
+					autoClosingBrackets: 'always',
+					autoClosingQuotes: 'always',
+					autoIndent: 'full',
+					tabSize: 4,
+					detectIndentation: false,
+
+					// Coding helpers
+					suggestOnTriggerCharacters: true,
+					acceptSuggestionOnEnter: 'on',
+					quickSuggestions: true,
+					parameterHints: { enabled: true },
+					wordBasedSuggestions: 'currentDocument',
+					folding: true,
+					formatOnPaste: true,
+
+					// Cursor & Scrolling
+					cursorBlinking: 'smooth',
+					cursorSmoothCaretAnimation: 'on',
+					// smoothScrolling: true,
+					roundedSelection: true,
+
+					// Selection
+					linkedEditing: true,
+					matchBrackets: 'always',
+					selectionHighlight: true,
+					occurrencesHighlight: 'singleFile',
+
+					readOnly: false,
 				}}
 			/>
 		</div>
