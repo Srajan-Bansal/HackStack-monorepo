@@ -4,6 +4,9 @@
 	"description": "Redis client for HackStack monorepo",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"exports": {
+		".": "./src/index.ts"
+	},
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch"
