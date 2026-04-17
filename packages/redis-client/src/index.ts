@@ -14,8 +14,8 @@ class RedisClient {
 				console.log('✅ Redis connected');
 			});
 
-			RedisClient.instance.on('error', (err) => {
-				console.error('❌ Redis error:', err);
+			RedisClient.instance.on('error', () => {
+				// Silenced - Redis is optional
 			});
 
 			RedisClient.instance.connect().catch((err) => {

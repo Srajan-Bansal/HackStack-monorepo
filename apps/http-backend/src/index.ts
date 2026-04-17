@@ -39,14 +39,22 @@ const PORT = process.env.PORT;
 
 const startServer = async () => {
 	try {
-		// Initialize Redis
-		const redis = RedisClient.getInstance();
-		await redis.ping();
-		console.log('✅ Redis connected');
+		// Initialize Redis (optional - app works without it)
+		try {
+			const redis = RedisClient.getInstance();
+			await redis.ping();
+			console.log('✅ Redis connected');
+		} catch (err) {
+			console.warn('⚠️ Redis not available - running without cache');
+		}
 
-		// Initialize Kafka producer on startup
-		await initKafkaProducer();
-		console.log('✅ Kafka producer ready');
+		// Initialize Kafka producer (optional - submissions won't work without it)
+		try {
+			await initKafkaProducer();
+			console.log('✅ Kafka producer ready');
+		} catch (err) {
+			console.warn('⚠️ Kafka not available - submissions will be disabled');
+		}
 
 		// Start HTTP server
 		const server = app.listen(PORT, () => {

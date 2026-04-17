@@ -9,7 +9,7 @@ import { SubmissionInputSchema } from '@repo/common-zod/types';
 import { handleError } from '../utils/errorHandler';
 import { LanguageMapping } from '@repo/language/LanguageMapping';
 import { getProblemCode } from '../utils/getProblemCode';
-import { sendCodeExecution } from '../services/kafka.service';
+import { sendCodeExecution, isKafkaReady } from '../services/kafka.service';
 import { AuthenticatedRequest } from '../middleware/authMiddleware';
 
 export const createSubmission = async (req: AuthenticatedRequest, res: Response) => {
@@ -20,6 +20,10 @@ export const createSubmission = async (req: AuthenticatedRequest, res: Response)
 
 		if (!userId) {
 			return handleError(res, 401, 'User authentication required');
+		}
+
+		if (!isKafkaReady()) {
+			return handleError(res, 503, 'Code execution service is currently unavailable');
 		}
 
 		const languageInternalId = LanguageMapping[languageId]?.internal;

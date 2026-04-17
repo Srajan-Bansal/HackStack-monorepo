@@ -29,9 +29,11 @@ export interface ExecutorInput {
 	submissionId: string;
 }
 
+export const isKafkaReady = () => !!producer;
+
 export const sendCodeExecution = async (input: ExecutorInput) => {
 	if (!producer) {
-		throw new Error('Kafka producer not initialized');
+		throw new Error('Kafka is not available - code execution is disabled');
 	}
 
 	await producer.send({
